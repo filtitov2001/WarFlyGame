@@ -39,7 +39,7 @@ final class Cloud: SKSpriteNode, GameBackgroudSpritable {
     fileprivate static var randomScaleFactor: CGFloat {
         let distribution = GKRandomDistribution(lowestValue: 20, highestValue: 30)
         let randomNumber = CGFloat(distribution.nextInt()) / 10
-        
+
         return randomNumber
     }
     
