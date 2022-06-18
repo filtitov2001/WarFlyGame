@@ -22,6 +22,11 @@ class GameScene: SKScene {
         spawnClouds()
         spawnIslands()
         player.performFly()
+        
+        let powerUp = PowerUp()
+        powerUp.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
+        powerUp.performRotation()
+        self.addChild(powerUp)
     }
     
     fileprivate func spawnClouds() {
