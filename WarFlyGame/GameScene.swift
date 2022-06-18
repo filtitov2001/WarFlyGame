@@ -19,6 +19,10 @@ class GameScene: SKScene {
     var player: SKSpriteNode!
     
     override func didMove(to view: SKView) {
+        configureStartScene()
+    }
+    
+    fileprivate func configureStartScene() {
         let screenCentrePoint = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
         let background = Background.populateBackground(at: screenCentrePoint)
         background.size = self.size
@@ -27,16 +31,18 @@ class GameScene: SKScene {
         
         let screen = UIScreen.main.bounds
         
-        for _ in 1...5 {
-            let x: CGFloat = CGFloat(GKRandomSource.sharedRandom().nextInt(upperBound: Int(screen.size.width)))
-            let y: CGFloat = CGFloat(GKRandomSource.sharedRandom().nextInt(upperBound: Int(screen.size.height)))
-            
-            let island = Island.populateSprite(at: CGPoint(x: x, y: y))
-            self.addChild(island)
-            
-            let cloud = Cloud.populateSprite(at: CGPoint(x: x, y: y))
-            self.addChild(cloud)
-        }
+        
+//        let x: CGFloat = CGFloat(GKRandomSource.sharedRandom().nextInt(upperBound: Int(screen.size.width)))
+//        let y: CGFloat = CGFloat(GKRandomSource.sharedRandom().nextInt(upperBound: Int(screen.size.height)))
+        
+        let island1 = Island.populate(at: CGPoint(x: 100, y: 200))
+        self.addChild(island1)
+        
+        let island2 = Island.populate(at: CGPoint(x: self.size.width - 100, y: self.size.height - 200))
+        self.addChild(island2)
+        
+//        let cloud = Cloud.populateSprite()
+//        self.addChild(cloud)
         
         player = PlayerPlane.populate(at: CGPoint(x: screen.size.width / 2, y: 100))
         self.addChild(player)
