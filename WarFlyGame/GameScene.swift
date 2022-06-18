@@ -12,49 +12,33 @@ import GameplayKit
 
 
 class GameScene: SKScene {
-    
 
     var player: PlayerPlane!
     
     override func didMove(to view: SKView) {
         
-        let deadline = DispatchTime.now() + .nanoseconds(1)
-        
         configureStartScene()
         spawnClouds()
         spawnIslands()
-        
+        let deadline = DispatchTime.now() + .nanoseconds(1)
         DispatchQueue.main.asyncAfter(deadline: deadline) { [unowned self] in
             self.player.performFly()
         }
         
         spawnPowerUp()
-        //spawnEnemy(count: 5)
+//        spawnEnemy(count: 5)
         spawnEnemies()
-        
     }
     
-    fileprivate func spawnEnemies() {
-        let waitAction = SKAction.wait(forDuration: 3.0)
-        let spawnSpiralAction = SKAction.run { [unowned self] in
-            self.spawnSpiralOfEnemies()
-        }
-        
-        let actionSequence = SKAction.sequence([waitAction, spawnSpiralAction])
-        let repeatActions = SKAction.repeatForever(actionSequence)
-        
-        self.run(repeatActions)
-    }
-    
-    fileprivate func spawnPowerUp () {
+    fileprivate func spawnPowerUp() {
+
         let spawnAction = SKAction.run {
             let randomNumber = Int(arc4random_uniform(2))
             let powerUp = randomNumber == 1 ? BluePowerUp() : GreenPowerUp()
-            let randomXPosition = Int(arc4random_uniform(UInt32(self.size.width - 30)))
+            let randomPositionX = arc4random_uniform(UInt32(self.size.width - 30))
             
-            powerUp.position = CGPoint(x: CGFloat(randomXPosition), y: self.size.height + 100)
+            powerUp.position = CGPoint(x: CGFloat(randomPositionX), y: self.size.height + 100)
             powerUp.startMovement()
-            
             self.addChild(powerUp)
         }
         
@@ -62,37 +46,41 @@ class GameScene: SKScene {
         let waitAction = SKAction.wait(forDuration: randomTimeSpawn)
         
         self.run(SKAction.repeatForever(SKAction.sequence([spawnAction, waitAction])))
-        
-        
     }
+    
+    
+    fileprivate func spawnEnemies() {
+        let waitAction = SKAction.wait(forDuration: 3.0)
+        let spawnSpiralAction = SKAction.run { [unowned self] in
+            self.spawnSpiralOfEnemies()
+        }
+        
+        self.run(SKAction.repeatForever(SKAction.sequence([waitAction, spawnSpiralAction])))
+    }
+    
     
     fileprivate func spawnSpiralOfEnemies() {
         let enemyTextureAtlas1 = SKTextureAtlas(named: "Enemy_1")
         let enemyTextureAtlas2 = SKTextureAtlas(named: "Enemy_2")
         SKTextureAtlas.preloadTextureAtlases([enemyTextureAtlas1, enemyTextureAtlas2]) { [unowned self] in
-            let randomAtlas = Int(arc4random_uniform(2))
-            let atlases = [enemyTextureAtlas1, enemyTextureAtlas2]
             
-            let textureAtlas = atlases[randomAtlas]
+            let randomNumber = Int(arc4random_uniform(2))
+            let arrayOfAtlases = [enemyTextureAtlas1, enemyTextureAtlas2]
+            let textureAtlas = arrayOfAtlases[randomNumber]
             
             let waitAction = SKAction.wait(forDuration: 1.0)
-            let spawnEnemy = SKAction.run { [unowned self] in
+            let spawnEnemy = SKAction.run({ [unowned self] in
                 let textureNames = textureAtlas.textureNames.sorted()
                 let texture = textureAtlas.textureNamed(textureNames[12])
-                
                 let enemy = Enemy(enemyTexture: texture)
-                
                 enemy.position = CGPoint(x: self.size.width / 2, y: self.size.height + 110)
                 self.addChild(enemy)
                 enemy.flySpiral()
-            }
+            })
             
             let spawnAction = SKAction.sequence([waitAction, spawnEnemy])
-            
             let repeatAction = SKAction.repeat(spawnAction, count: 3)
-            
             self.run(repeatAction)
-            
         }
     }
     
@@ -140,17 +128,29 @@ class GameScene: SKScene {
     
     override func didSimulatePhysics() {
         
-        
         player.checkPosition()
         
         enumerateChildNodes(withName: "sprite") { (node, stop) in
             if node.position.y <= -100 {
                 node.removeFromParent()
-                
-                if node.isKind(of: PowerUp.self) {
-                    print("Power up is removed")
-                }
             }
         }
+        
+        enumerateChildNodes(withName: "shotSprite") { (node, stop) in
+            if node.position.y >= self.size.height + 100 {
+                node.removeFromParent()
+            }
+        }
+    }
+    
+    fileprivate func playerFire() {
+        let shot = YellowShot()
+        shot.position = self.player.position
+        shot.startMovement()
+        self.addChild(shot)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        playerFire()
     }
 }
