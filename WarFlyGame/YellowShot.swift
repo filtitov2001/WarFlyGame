@@ -12,7 +12,7 @@ import SpriteKit
 class YellowShot: Shot {
     
     init() {
-        let textureAtlas = SKTextureAtlas(named: "YellowShot")
+        let textureAtlas = Assets.shared.yellowShotAtlas // SKTextureAtlas(named: "YellowShot")
         super.init(textureAtlas: textureAtlas)
     }
     
