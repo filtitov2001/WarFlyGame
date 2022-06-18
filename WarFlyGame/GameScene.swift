@@ -28,17 +28,36 @@ class GameScene: SKScene {
             self.player.performFly()
         }
         
+        spawnPowerUp()
+        spawnEnemy(count: 5)
+        
+    }
+    
+    fileprivate func spawnPowerUp () {
         let powerUp = PowerUp()
         powerUp.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
         powerUp.performRotation()
         self.addChild(powerUp)
-        
+    }
+    
+    fileprivate func spawnEnemy(count: Int) {
         let enemyTextureAtlas = SKTextureAtlas(named: "Enemy_1")
         SKTextureAtlas.preloadTextureAtlases([enemyTextureAtlas]) {
             Enemy.textureAtlas = enemyTextureAtlas
-            let enemy = Enemy()
-            enemy.position = CGPoint(x: self.size.width / 2, y: self.size.height * 2 / 3)
-            self.addChild(enemy)
+            let waitAction = SKAction.wait(forDuration: 1.0)
+            let spawnEnemy = SKAction.run {
+                let enemy = Enemy()
+                enemy.position = CGPoint(x: self.size.width / 2, y: self.size.height + 110)
+                self.addChild(enemy)
+                enemy.flySpiral()
+            }
+            
+            let spawnAction = SKAction.sequence([waitAction, spawnEnemy])
+            
+            let repeatAction = SKAction.repeat(spawnAction, count: count)
+            
+            self.run(repeatAction)
+            
         }
     }
     
@@ -91,8 +110,8 @@ class GameScene: SKScene {
         
         player.checkPosition()
         
-        enumerateChildNodes(withName: "backgroundSprite") { (node, stop) in
-            if node.position.y < -199 {
+        enumerateChildNodes(withName: "sprite") { (node, stop) in
+            if node.position.y < -100 {
                 node.removeFromParent()
             }
         }
