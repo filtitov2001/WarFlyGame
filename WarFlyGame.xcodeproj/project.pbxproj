@@ -21,6 +21,8 @@
 		2BA23FEC285DD9BE00B02251 /* protocol GameBackgroundSpritable + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA23FEB285DD9BE00B02251 /* protocol GameBackgroundSpritable + Extension.swift */; };
 		2BA23FEE285E019000B02251 /* PowerUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA23FED285E019000B02251 /* PowerUp.swift */; };
 		2BA23FF0285E025900B02251 /* GreenPowerUp.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 2BA23FEF285E025900B02251 /* GreenPowerUp.atlas */; };
+		2BA23FF2285E0C0C00B02251 /* Enemy_1.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 2BA23FF1285E0C0C00B02251 /* Enemy_1.atlas */; };
+		2BA23FF4285E13B300B02251 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA23FF3285E13B300B02251 /* Enemy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,8 @@
 		2BA23FEB285DD9BE00B02251 /* protocol GameBackgroundSpritable + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "protocol GameBackgroundSpritable + Extension.swift"; sourceTree = "<group>"; };
 		2BA23FED285E019000B02251 /* PowerUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUp.swift; sourceTree = "<group>"; };
 		2BA23FEF285E025900B02251 /* GreenPowerUp.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = GreenPowerUp.atlas; sourceTree = "<group>"; };
+		2BA23FF1285E0C0C00B02251 /* Enemy_1.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Enemy_1.atlas; sourceTree = "<group>"; };
+		2BA23FF3285E13B300B02251 /* Enemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,12 +82,14 @@
 				2B7B8436285524D700C20BEF /* GameViewController.swift */,
 				2B7B8438285524D700C20BEF /* Main.storyboard */,
 				2B7B843B285524D900C20BEF /* Assets.xcassets */,
+				2BA23FF1285E0C0C00B02251 /* Enemy_1.atlas */,
 				2BA23FEF285E025900B02251 /* GreenPowerUp.atlas */,
 				2B9D216928576AD60026ACF6 /* PlayerPlane.atlas */,
 				2B7B843D285524D900C20BEF /* LaunchScreen.storyboard */,
 				2B7B84772856119500C20BEF /* Island.swift */,
 				2B7B847928561A8D00C20BEF /* Cloud.swift */,
 				2B9D216728576A140026ACF6 /* PlayerPlane.swift */,
+				2BA23FF3285E13B300B02251 /* Enemy.swift */,
 				2BA23FEB285DD9BE00B02251 /* protocol GameBackgroundSpritable + Extension.swift */,
 			);
 			path = WarFlyGame;
@@ -147,6 +153,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BA23FF2285E0C0C00B02251 /* Enemy_1.atlas in Resources */,
 				2B7B843A285524D700C20BEF /* Main.storyboard in Resources */,
 				2BA23FF0285E025900B02251 /* GreenPowerUp.atlas in Resources */,
 				2B9D216A28576AD60026ACF6 /* PlayerPlane.atlas in Resources */,
@@ -168,6 +175,7 @@
 				2B7B8437285524D700C20BEF /* GameViewController.swift in Sources */,
 				2B7B842F285524D700C20BEF /* AppDelegate.swift in Sources */,
 				2B7B84782856119500C20BEF /* Island.swift in Sources */,
+				2BA23FF4285E13B300B02251 /* Enemy.swift in Sources */,
 				2B7B844628552AEA00C20BEF /* Background.swift in Sources */,
 				2BA23FEE285E019000B02251 /* PowerUp.swift in Sources */,
 				2BA23FEC285DD9BE00B02251 /* protocol GameBackgroundSpritable + Extension.swift in Sources */,
