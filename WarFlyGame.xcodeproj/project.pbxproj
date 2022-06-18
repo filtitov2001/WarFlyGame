@@ -18,7 +18,7 @@
 		2B7B847A28561A8D00C20BEF /* Cloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7B847928561A8D00C20BEF /* Cloud.swift */; };
 		2B9D216828576A140026ACF6 /* PlayerPlane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9D216728576A140026ACF6 /* PlayerPlane.swift */; };
 		2B9D216A28576AD60026ACF6 /* PlayerPlane.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 2B9D216928576AD60026ACF6 /* PlayerPlane.atlas */; };
-		2BA23FEC285DD9BE00B02251 /* Protocol GameBackgroundSpritable + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA23FEB285DD9BE00B02251 /* Protocol GameBackgroundSpritable + Extension.swift */; };
+		2BA23FEC285DD9BE00B02251 /* protocol GameBackgroundSpritable + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA23FEB285DD9BE00B02251 /* protocol GameBackgroundSpritable + Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,7 +34,7 @@
 		2B7B847928561A8D00C20BEF /* Cloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cloud.swift; sourceTree = "<group>"; };
 		2B9D216728576A140026ACF6 /* PlayerPlane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerPlane.swift; sourceTree = "<group>"; };
 		2B9D216928576AD60026ACF6 /* PlayerPlane.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerPlane.atlas; sourceTree = "<group>"; };
-		2BA23FEB285DD9BE00B02251 /* Protocol GameBackgroundSpritable + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Protocol GameBackgroundSpritable + Extension.swift"; sourceTree = "<group>"; };
+		2BA23FEB285DD9BE00B02251 /* protocol GameBackgroundSpritable + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "protocol GameBackgroundSpritable + Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +78,7 @@
 				2B7B84772856119500C20BEF /* Island.swift */,
 				2B7B847928561A8D00C20BEF /* Cloud.swift */,
 				2B9D216728576A140026ACF6 /* PlayerPlane.swift */,
-				2BA23FEB285DD9BE00B02251 /* Protocol GameBackgroundSpritable + Extension.swift */,
+				2BA23FEB285DD9BE00B02251 /* protocol GameBackgroundSpritable + Extension.swift */,
 			);
 			path = WarFlyGame;
 			sourceTree = "<group>";
@@ -162,7 +162,7 @@
 				2B7B842F285524D700C20BEF /* AppDelegate.swift in Sources */,
 				2B7B84782856119500C20BEF /* Island.swift in Sources */,
 				2B7B844628552AEA00C20BEF /* Background.swift in Sources */,
-				2BA23FEC285DD9BE00B02251 /* Protocol GameBackgroundSpritable + Extension.swift in Sources */,
+				2BA23FEC285DD9BE00B02251 /* protocol GameBackgroundSpritable + Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
