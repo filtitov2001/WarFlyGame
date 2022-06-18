@@ -18,10 +18,15 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         
+        let deadline = DispatchTime.now() + .nanoseconds(1)
+        
         configureStartScene()
         spawnClouds()
         spawnIslands()
-        player.performFly()
+        
+        DispatchQueue.main.asyncAfter(deadline: deadline) { [unowned self] in
+            self.player.performFly()
+        }
         
         let powerUp = PowerUp()
         powerUp.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
