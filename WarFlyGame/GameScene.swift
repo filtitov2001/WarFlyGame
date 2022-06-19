@@ -12,7 +12,7 @@ import GameplayKit
 
 
 class GameScene: SKScene {
-
+    
     var player: PlayerPlane!
     
     override func didMove(to view: SKView) {
@@ -23,18 +23,15 @@ class GameScene: SKScene {
         configureStartScene()
         spawnClouds()
         spawnIslands()
-        let deadline = DispatchTime.now() + .nanoseconds(1)
-        DispatchQueue.main.asyncAfter(deadline: deadline) { [unowned self] in
-            self.player.performFly()
-        }
+        
+        self.player.performFly()
         
         spawnPowerUp()
-//        spawnEnemy(count: 5)
         spawnEnemies()
     }
     
     fileprivate func spawnPowerUp() {
-
+        
         let spawnAction = SKAction.run {
             let randomNumber = Int(arc4random_uniform(2))
             let powerUp = randomNumber == 1 ? BluePowerUp() : GreenPowerUp()
@@ -172,21 +169,21 @@ extension GameScene: SKPhysicsContactDelegate  {
         default: preconditionFailure("Unable to detect category")
             
         }
-//        let bodyA = contact.bodyA.categoryBitMask
-//        let bodyB = contact.bodyB.categoryBitMask
-//
-//        let player = BitMaskCategory.player
-//        let enemy = BitMaskCategory.enemy
-//        let shot = BitMaskCategory.shot
-//        let powerUp = BitMaskCategory.powerUp
-//
-//        if bodyA == player && bodyB == enemy || bodyB == player && bodyA == enemy {
-//            print("Enemy vs Player")
-//        } else if bodyA == player && bodyB == powerUp || bodyB == player && bodyA == powerUp {
-//            print("PowerUp vs Player")
-//        } else if bodyA == shot && bodyB == enemy || bodyB == shot && bodyA == enemy {
-//            print("Enemy vs shot")
-//        }
+        //        let bodyA = contact.bodyA.categoryBitMask
+        //        let bodyB = contact.bodyB.categoryBitMask
+        //
+        //        let player = BitMaskCategory.player
+        //        let enemy = BitMaskCategory.enemy
+        //        let shot = BitMaskCategory.shot
+        //        let powerUp = BitMaskCategory.powerUp
+        //
+        //        if bodyA == player && bodyB == enemy || bodyB == player && bodyA == enemy {
+        //            print("Enemy vs Player")
+        //        } else if bodyA == player && bodyB == powerUp || bodyB == player && bodyA == powerUp {
+        //            print("PowerUp vs Player")
+        //        } else if bodyA == shot && bodyB == enemy || bodyB == shot && bodyA == enemy {
+        //            print("Enemy vs shot")
+        //        }
     }
     
     func didEnd(_ contact: SKPhysicsContact) {
