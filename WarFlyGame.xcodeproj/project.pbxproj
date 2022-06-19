@@ -39,6 +39,7 @@
 		2BA2401B285F69C000B02251 /* SceneManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA2401A285F69C000B02251 /* SceneManager.swift */; };
 		2BA2401D285F8E2800B02251 /* ParentScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA2401C285F8E2800B02251 /* ParentScene.swift */; };
 		2BA2401F285F907600B02251 /* OptionsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA2401E285F907600B02251 /* OptionsScene.swift */; };
+		2BA24021285F9E8600B02251 /* BestScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA24020285F9E8600B02251 /* BestScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +76,7 @@
 		2BA2401A285F69C000B02251 /* SceneManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneManager.swift; sourceTree = "<group>"; };
 		2BA2401C285F8E2800B02251 /* ParentScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentScene.swift; sourceTree = "<group>"; };
 		2BA2401E285F907600B02251 /* OptionsScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsScene.swift; sourceTree = "<group>"; };
+		2BA24020285F9E8600B02251 /* BestScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +202,7 @@
 			children = (
 				2B7B8434285524D700C20BEF /* GameScene.swift */,
 				2BA24008285E99D200B02251 /* MenuScene.swift */,
+				2BA24020285F9E8600B02251 /* BestScene.swift */,
 				2BA2401E285F907600B02251 /* OptionsScene.swift */,
 				2BA24018285F5FED00B02251 /* PauseScene.swift */,
 				2BA2401C285F8E2800B02251 /* ParentScene.swift */,
@@ -306,6 +309,7 @@
 				2BA23FFC285E7DEC00B02251 /* GreenPowerUp.swift in Sources */,
 				2B7B844628552AEA00C20BEF /* Background.swift in Sources */,
 				2BA23FEE285E019000B02251 /* PowerUp.swift in Sources */,
+				2BA24021285F9E8600B02251 /* BestScene.swift in Sources */,
 				2BA2400B285F31E000B02251 /* BitMaskCategory.swift in Sources */,
 				2BA24009285E99D200B02251 /* MenuScene.swift in Sources */,
 				2BA2401D285F8E2800B02251 /* ParentScene.swift in Sources */,
