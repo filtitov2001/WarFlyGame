@@ -9,11 +9,10 @@
 
 import SpriteKit
 
-class MenuScene: SKScene {
+class MenuScene: ParentScene {
     override func didMove(to view: SKView) {
         
         let titles = ["play", "options", "best"]
-        let header = SKSpriteNode(imageNamed: "header1")
         
         if !Assets.shared.isLoaded {
             Assets.shared.preloadAssets()
@@ -22,8 +21,11 @@ class MenuScene: SKScene {
         
         self.backgroundColor = SKColor(red: 0.15, green: 0.15, blue: 0.3, alpha: 1.0)
         
-        header.position = CGPoint(x: self.frame.midX, y: self.frame.midY + 150)
-        self.addChild(header)
+        setHeader(withName: nil, andBackground: "header1")
+        
+//        let header = SKSpriteNode(imageNamed: "header1")
+//        header.position = CGPoint(x: self.frame.midX, y: self.frame.midY + 150)
+//        self.addChild(header)
         
         
         for (index, title) in titles.enumerated() {
@@ -47,6 +49,12 @@ class MenuScene: SKScene {
             gameScene.scaleMode = .aspectFill
             self.scene?.view?.presentScene(gameScene, transition: transition)
             
+        } else if node.name == "options" {
+            let transition = SKTransition.crossFade(withDuration: 1.0)
+            let optionScene = OptionsScene(size: self.size)
+            optionScene.backScene = self
+            optionScene.scaleMode = .aspectFill
+            self.scene!.view?.presentScene(optionScene, transition: transition)
         }
     }
 }

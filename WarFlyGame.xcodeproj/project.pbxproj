@@ -37,6 +37,8 @@
 		2BA24017285F5A3B00B02251 /* ButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA24016285F5A3B00B02251 /* ButtonNode.swift */; };
 		2BA24019285F5FED00B02251 /* PauseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA24018285F5FED00B02251 /* PauseScene.swift */; };
 		2BA2401B285F69C000B02251 /* SceneManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA2401A285F69C000B02251 /* SceneManager.swift */; };
+		2BA2401D285F8E2800B02251 /* ParentScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA2401C285F8E2800B02251 /* ParentScene.swift */; };
+		2BA2401F285F907600B02251 /* OptionsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA2401E285F907600B02251 /* OptionsScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +73,8 @@
 		2BA24016285F5A3B00B02251 /* ButtonNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonNode.swift; sourceTree = "<group>"; };
 		2BA24018285F5FED00B02251 /* PauseScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseScene.swift; sourceTree = "<group>"; };
 		2BA2401A285F69C000B02251 /* SceneManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneManager.swift; sourceTree = "<group>"; };
+		2BA2401C285F8E2800B02251 /* ParentScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentScene.swift; sourceTree = "<group>"; };
+		2BA2401E285F907600B02251 /* OptionsScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,7 +200,9 @@
 			children = (
 				2B7B8434285524D700C20BEF /* GameScene.swift */,
 				2BA24008285E99D200B02251 /* MenuScene.swift */,
+				2BA2401E285F907600B02251 /* OptionsScene.swift */,
 				2BA24018285F5FED00B02251 /* PauseScene.swift */,
+				2BA2401C285F8E2800B02251 /* ParentScene.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -302,11 +308,13 @@
 				2BA23FEE285E019000B02251 /* PowerUp.swift in Sources */,
 				2BA2400B285F31E000B02251 /* BitMaskCategory.swift in Sources */,
 				2BA24009285E99D200B02251 /* MenuScene.swift in Sources */,
+				2BA2401D285F8E2800B02251 /* ParentScene.swift in Sources */,
 				2BA24019285F5FED00B02251 /* PauseScene.swift in Sources */,
 				2BA2400D285F52CC00B02251 /* HUD.swift in Sources */,
 				2BA24001285E8A8D00B02251 /* Shot.swift in Sources */,
 				2BA23FEC285DD9BE00B02251 /* protocol GameBackgroundSpritable + Extension.swift in Sources */,
 				2BA24017285F5A3B00B02251 /* ButtonNode.swift in Sources */,
+				2BA2401F285F907600B02251 /* OptionsScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
