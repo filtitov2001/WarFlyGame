@@ -14,6 +14,7 @@ import GameplayKit
 class GameScene: ParentScene {
     
     
+    var backgroundMusic: SKAudioNode!
     
     fileprivate var player: PlayerPlane!
     fileprivate let hud = HUD()
@@ -39,10 +40,14 @@ class GameScene: ParentScene {
         }
     }
     
-    
     override func didMove(to view: SKView) {
-        self.scene?.isPaused = false
+        if let musicURL = Bundle.main.url(forResource: "backgroundMusic", withExtension: "mp3") {
+            backgroundMusic = SKAudioNode(url: musicURL)
+            addChild(backgroundMusic)
+        }
         
+        
+        self.scene?.isPaused = false
         // checking if scene persists
         guard sceneManager.gameScene == nil else { return }
         
@@ -170,12 +175,6 @@ class GameScene: ParentScene {
             }
         }
         
-        enumerateChildNodes(withName: "shotSprite") { (node, stop) in
-            if node.position.y >= self.size.height + 100 {
-                node.removeFromParent()
-            }
-        }
-        
         enumerateChildNodes(withName: "bluePowerUp") { (node, stop) in
             if node.position.y <= -100 {
                 node.removeFromParent()
@@ -184,6 +183,13 @@ class GameScene: ParentScene {
         
         enumerateChildNodes(withName: "greenPowerUp") { (node, stop) in
             if node.position.y <= -100 {
+                node.removeFromParent()
+            }
+        }
+        
+        
+        enumerateChildNodes(withName: "shotSprite") { (node, stop) in
+            if node.position.y >= self.size.height + 100 {
                 node.removeFromParent()
             }
         }
@@ -208,7 +214,6 @@ class GameScene: ParentScene {
             self.scene?.isPaused = true
             self.scene!.view?.presentScene(pauseScene, transition: transition)
         } else {
-            //            self.scene?.isPaused = false
             playerFire()
         }
     }
@@ -223,76 +228,69 @@ extension GameScene: SKPhysicsContactDelegate {
         let contactPoint = contact.contactPoint
         explosion?.position = contactPoint
         explosion?.zPosition = 25
-        
-        let waitForExplosionAction = SKAction.wait(forDuration: 1.0)
+        let waitForExplosionAction = SKAction.wait(forDuration: 2.0)
         
         let contactCategory: BitMaskCategory = [contact.bodyA.category, contact.bodyB.category]
         switch contactCategory {
         case [.enemy, .player]: print("enemy vs player")
-            
-            if contact.bodyA.node?.name == "sprite" {
-                if contact.bodyA.node?.parent != nil {
-                    contact.bodyA.node?.removeFromParent()
-                    lives -= 1
-                }
-            } else {
-                if contact.bodyB.node?.parent != nil {
-                    contact.bodyB.node?.removeFromParent()
-                    lives -= 1
-                }
+        
+        if contact.bodyA.node?.name == "sprite" {
+            if contact.bodyA.node?.parent != nil {
+                contact.bodyA.node?.removeFromParent()
+                lives -= 1
             }
-            
-            addChild(explosion!)
-            self.run(waitForExplosionAction) {
-                explosion?.removeFromParent()
+        } else {
+            if contact.bodyB.node?.parent != nil {
+                contact.bodyB.node?.removeFromParent()
+                lives -= 1
             }
-            
-            if lives == 0 {
-                let gameOverScene = GameOverScene(size: self.size)
-                gameOverScene.scaleMode = .aspectFill
-                let transition = SKTransition.doorsCloseVertical(withDuration: 1.0)
-                self.scene?.view?.presentScene(gameOverScene, transition: transition)
+        }
+        addChild(explosion!)
+        self.run(waitForExplosionAction){ explosion?.removeFromParent() }
+        
+        if lives == 0 {
+            let gameOverScene = GameOverScene(size: self.size)
+            gameOverScene.scaleMode = .aspectFill
+            let transition = SKTransition.doorsCloseVertical(withDuration: 1.0)
+            self.scene!.view?.presentScene(gameOverScene, transition: transition)
             }
             
         case [.powerUp, .player]: print("powerUp vs player")
+        
+        if contact.bodyA.node?.parent != nil && contact.bodyB.node?.parent != nil {
             
-            if contact.bodyA.node?.parent != nil && contact.bodyB.node?.parent != nil {
-                
-                if contact.bodyA.node?.name == "bluePowerUp" {
-                    contact.bodyA.node?.removeFromParent()
-                    lives = 3
-                    player.bluePowerUp()
-                } else if contact.bodyB.node?.name == "bluePowerUp" {
-                    contact.bodyB.node?.removeFromParent()
-                    lives = 3
-                    player.bluePowerUp()
-                }
-                if contact.bodyA.node?.name == "greenPowerUp"{
-                    contact.bodyA.node?.removeFromParent()
-                    hud.score += 100
-                    player.greenPowerUp()
-                } else {
-                    contact.bodyB.node?.removeFromParent()
-                    hud.score += 100
-                    player.greenPowerUp()
-                    
-                }
-                
-            }
-                
-        case [.enemy, .shot]: print("enemy vs shot")
-            hud.score += 5
-            
-            if contact.bodyA.node?.parent != nil {
+            if contact.bodyA.node?.name == "bluePowerUp" {
                 contact.bodyA.node?.removeFromParent()
+                lives = 3
+                player.bluePowerUp()
+            } else if contact.bodyB.node?.name == "bluePowerUp" {
                 contact.bodyB.node?.removeFromParent()
-                addChild(explosion!)
-                self.run(waitForExplosionAction) {
-                    explosion?.removeFromParent()
-                }
+                lives = 3
+                player.bluePowerUp()
             }
+            
+            if contact.bodyA.node?.name == "greenPowerUp" {
+                contact.bodyA.node?.removeFromParent()
+                player.greenPowerUp()
+            } else {
+                contact.bodyB.node?.removeFromParent()
+                player.greenPowerUp()
+            }
+        }
+            
+        case [.enemy, .shot]: print("enemy vs shot")
+        
+        if contact.bodyA.node?.parent != nil && contact.bodyB.node?.parent != nil {
+            contact.bodyA.node?.removeFromParent()
+            contact.bodyB.node?.removeFromParent()
+            self.run(SKAction.playSoundFileNamed("hitSound", waitForCompletion: false))
+            hud.score += 5
+            addChild(explosion!)
+            self.run(waitForExplosionAction){ explosion?.removeFromParent() }
+        }
             
         default: preconditionFailure("Unable to detect collision category")
+            
         }
     }
     
@@ -300,9 +298,3 @@ extension GameScene: SKPhysicsContactDelegate {
         
     }
 }
-
-
-
-
-
-
