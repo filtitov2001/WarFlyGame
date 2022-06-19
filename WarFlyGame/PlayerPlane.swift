@@ -30,7 +30,23 @@ class PlayerPlane: SKSpriteNode {
         playerPlane.position = point
         playerPlane.zPosition = 40
         
-        playerPlane.physicsBody = SKPhysicsBody(texture: playerPlaneTexture, alphaThreshold: 0.5, size: playerPlane.size)
+        let offsetX = playerPlane.frame.size.width * playerPlane.anchorPoint.x
+        let offsetY = playerPlane.frame.size.height * playerPlane.anchorPoint.y
+        
+        let path = CGMutablePath()
+        
+        path.move(to: CGPoint(x: 7 - offsetX, y: 75 - offsetY))
+        path.addLine(to: CGPoint(x: 64 - offsetX, y: 84 - offsetY))
+        path.addLine(to: CGPoint(x: 70 - offsetX, y: 98 - offsetY))
+        path.addLine(to: CGPoint(x: 79 - offsetX, y: 99 - offsetY))
+        path.addLine(to: CGPoint(x: 84 - offsetX, y: 85 - offsetY))
+        path.addLine(to: CGPoint(x: 141 - offsetX, y: 75 - offsetY))
+        path.addLine(to: CGPoint(x: 141 - offsetX, y: 66 - offsetY))
+        path.addLine(to: CGPoint(x: 85 - offsetX, y: 57 - offsetY))
+        path.addLine(to: CGPoint(x: 8 - offsetX, y: 64 - offsetY))
+        path.closeSubpath()
+        
+        playerPlane.physicsBody = SKPhysicsBody(polygonFrom: path)
         playerPlane.physicsBody?.isDynamic = false
         playerPlane.physicsBody?.categoryBitMask = BitMaskCategory.player
         playerPlane.physicsBody?.collisionBitMask = BitMaskCategory.enemy | BitMaskCategory.powerUp
