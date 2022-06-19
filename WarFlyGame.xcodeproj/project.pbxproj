@@ -45,6 +45,7 @@
 		2BA24028285FB4AE00B02251 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA24027285FB4AE00B02251 /* GameOverScene.swift */; };
 		2BA2402B285FC25F00B02251 /* hitSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2BA2402A285FC25F00B02251 /* hitSound.wav */; };
 		2BA2402D285FCAEC00B02251 /* backgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2BA2402C285FCAEC00B02251 /* backgroundMusic.mp3 */; };
+		2BA2402F285FCD2500B02251 /* GameSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA2402E285FCD2500B02251 /* GameSettings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,6 +88,7 @@
 		2BA24027285FB4AE00B02251 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		2BA2402A285FC25F00B02251 /* hitSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hitSound.wav; sourceTree = "<group>"; };
 		2BA2402C285FCAEC00B02251 /* backgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backgroundMusic.mp3; sourceTree = "<group>"; };
+		2BA2402E285FCD2500B02251 /* GameSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSettings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +208,7 @@
 				2BA24006285E961100B02251 /* Assets.swift */,
 				2BA2400A285F31E000B02251 /* BitMaskCategory.swift */,
 				2BA2401A285F69C000B02251 /* SceneManager.swift */,
+				2BA2402E285FCD2500B02251 /* GameSettings.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 			files = (
 				2B7B8435285524D700C20BEF /* GameScene.swift in Sources */,
 				2BA24005285E927300B02251 /* YellowShot.swift in Sources */,
+				2BA2402F285FCD2500B02251 /* GameSettings.swift in Sources */,
 				2B9D216828576A140026ACF6 /* PlayerPlane.swift in Sources */,
 				2B7B847A28561A8D00C20BEF /* Cloud.swift in Sources */,
 				2B7B8437285524D700C20BEF /* GameViewController.swift in Sources */,
