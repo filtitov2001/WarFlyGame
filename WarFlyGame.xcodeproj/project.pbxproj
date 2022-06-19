@@ -42,6 +42,7 @@
 		2BA24021285F9E8600B02251 /* BestScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA24020285F9E8600B02251 /* BestScene.swift */; };
 		2BA24024285FA8B300B02251 /* EnemyExplosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2BA24022285FA8B300B02251 /* EnemyExplosion.sks */; };
 		2BA24025285FA8B300B02251 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BA24023285FA8B300B02251 /* Assets.xcassets */; };
+		2BA24028285FB4AE00B02251 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA24027285FB4AE00B02251 /* GameOverScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +82,7 @@
 		2BA24020285F9E8600B02251 /* BestScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestScene.swift; sourceTree = "<group>"; };
 		2BA24022285FA8B300B02251 /* EnemyExplosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EnemyExplosion.sks; sourceTree = "<group>"; };
 		2BA24023285FA8B300B02251 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2BA24027285FB4AE00B02251 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				2B7B8434285524D700C20BEF /* GameScene.swift */,
+				2BA24027285FB4AE00B02251 /* GameOverScene.swift */,
 				2BA24008285E99D200B02251 /* MenuScene.swift */,
 				2BA24020285F9E8600B02251 /* BestScene.swift */,
 				2BA2401E285F907600B02251 /* OptionsScene.swift */,
@@ -321,6 +324,7 @@
 				2B7B84782856119500C20BEF /* Island.swift in Sources */,
 				2BA24007285E961100B02251 /* Assets.swift in Sources */,
 				2BA23FF4285E13B300B02251 /* Enemy.swift in Sources */,
+				2BA24028285FB4AE00B02251 /* GameOverScene.swift in Sources */,
 				2BA2401B285F69C000B02251 /* SceneManager.swift in Sources */,
 				2BA23FFC285E7DEC00B02251 /* GreenPowerUp.swift in Sources */,
 				2B7B844628552AEA00C20BEF /* Background.swift in Sources */,
