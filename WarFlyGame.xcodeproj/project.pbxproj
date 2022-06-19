@@ -36,6 +36,7 @@
 		2BA2400D285F52CC00B02251 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA2400C285F52CC00B02251 /* HUD.swift */; };
 		2BA24017285F5A3B00B02251 /* ButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA24016285F5A3B00B02251 /* ButtonNode.swift */; };
 		2BA24019285F5FED00B02251 /* PauseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA24018285F5FED00B02251 /* PauseScene.swift */; };
+		2BA2401B285F69C000B02251 /* SceneManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA2401A285F69C000B02251 /* SceneManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +70,7 @@
 		2BA2400C285F52CC00B02251 /* HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
 		2BA24016285F5A3B00B02251 /* ButtonNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonNode.swift; sourceTree = "<group>"; };
 		2BA24018285F5FED00B02251 /* PauseScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseScene.swift; sourceTree = "<group>"; };
+		2BA2401A285F69C000B02251 /* SceneManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +186,7 @@
 			children = (
 				2BA24006285E961100B02251 /* Assets.swift */,
 				2BA2400A285F31E000B02251 /* BitMaskCategory.swift */,
+				2BA2401A285F69C000B02251 /* SceneManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				2B7B84782856119500C20BEF /* Island.swift in Sources */,
 				2BA24007285E961100B02251 /* Assets.swift in Sources */,
 				2BA23FF4285E13B300B02251 /* Enemy.swift in Sources */,
+				2BA2401B285F69C000B02251 /* SceneManager.swift in Sources */,
 				2BA23FFC285E7DEC00B02251 /* GreenPowerUp.swift in Sources */,
 				2B7B844628552AEA00C20BEF /* Background.swift in Sources */,
 				2BA23FEE285E019000B02251 /* PowerUp.swift in Sources */,

@@ -13,11 +13,19 @@ import GameplayKit
 
 class GameScene: SKScene {
     
-    fileprivate let hud = HUD()
-    fileprivate let screenSize =  UIScreen.main.bounds.size
+    let sceneManager = SceneManager.shared
+    
     fileprivate var player: PlayerPlane!
+    fileprivate let hud = HUD()
+    fileprivate let screenSize = UIScreen.main.bounds.size
+  
     
     override func didMove(to view: SKView) {
+        
+        // checking if scene persists
+        guard sceneManager.gameScene == nil else { return }
+        
+        sceneManager.gameScene = self
         
         physicsWorld.contactDelegate = self
         physicsWorld.gravity = CGVector.zero
@@ -25,7 +33,6 @@ class GameScene: SKScene {
         configureStartScene()
         spawnClouds()
         spawnIslands()
-        
         self.player.performFly()
         
         spawnPowerUp()
@@ -39,7 +46,7 @@ class GameScene: SKScene {
     }
     
     fileprivate func spawnPowerUp() {
-        
+
         let spawnAction = SKAction.run {
             let randomNumber = Int(arc4random_uniform(2))
             let powerUp = randomNumber == 1 ? BluePowerUp() : GreenPowerUp()
@@ -56,7 +63,6 @@ class GameScene: SKScene {
         self.run(SKAction.repeatForever(SKAction.sequence([spawnAction, waitAction])))
     }
     
-    
     fileprivate func spawnEnemies() {
         let waitAction = SKAction.wait(forDuration: 3.0)
         let spawnSpiralAction = SKAction.run { [unowned self] in
@@ -66,11 +72,9 @@ class GameScene: SKScene {
         self.run(SKAction.repeatForever(SKAction.sequence([waitAction, spawnSpiralAction])))
     }
     
-    
     fileprivate func spawnSpiralOfEnemies() {
-        let atlas = Assets.shared
-        let enemyTextureAtlas1 = atlas.enemy1Atlas // SKTextureAtlas(named: "Enemy_1")
-        let enemyTextureAtlas2 = atlas.enemy2Atlas // SKTextureAtlas(named: "Enemy_2")
+        let enemyTextureAtlas1 = Assets.shared.enemy1Atlas //SKTextureAtlas(named: "Enemy_1")
+        let enemyTextureAtlas2 = Assets.shared.enemy2Atlas //SKTextureAtlas(named: "Enemy_2")
         SKTextureAtlas.preloadTextureAtlases([enemyTextureAtlas1, enemyTextureAtlas2]) { [unowned self] in
             
             let randomNumber = Int(arc4random_uniform(2))
@@ -161,16 +165,13 @@ class GameScene: SKScene {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let location = touches.first!.location(in: self)
-        
         let node = self.atPoint(location)
         
         if node.name == "pause" {
             let transition = SKTransition.doorway(withDuration: 1.0)
-            
             let pauseScene = PauseScene(size: self.size)
             pauseScene.scaleMode = .aspectFill
-            self.scene?.view?.presentScene(pauseScene, transition: transition)
-            
+            self.scene!.view?.presentScene(pauseScene, transition: transition)
         } else {
             playerFire()
         }
@@ -178,36 +179,26 @@ class GameScene: SKScene {
 }
 
 
-extension GameScene: SKPhysicsContactDelegate  {
+extension GameScene: SKPhysicsContactDelegate {
+    
     func didBegin(_ contact: SKPhysicsContact) {
         
         let contactCategory: BitMaskCategory = [contact.bodyA.category, contact.bodyB.category]
-        
         switch contactCategory {
-        case [.enemy, .player]: print("Enemy vs Player")
-        case [.player, .powerUp]: print("PowerUp vs Player")
-        case [.shot,.enemy]: print("Enemy vs shot")
-        default: preconditionFailure("Unable to detect category")
-            
+        case [.enemy, .player]: print("enemy vs player")
+        case [.powerUp, .player]: print("powerUp vs player")
+        case [.enemy, .shot]: print("enemy vs shot")
+        default: preconditionFailure("Unable to detect collision category")
         }
-        //        let bodyA = contact.bodyA.categoryBitMask
-        //        let bodyB = contact.bodyB.categoryBitMask
-        //
-        //        let player = BitMaskCategory.player
-        //        let enemy = BitMaskCategory.enemy
-        //        let shot = BitMaskCategory.shot
-        //        let powerUp = BitMaskCategory.powerUp
-        //
-        //        if bodyA == player && bodyB == enemy || bodyB == player && bodyA == enemy {
-        //            print("Enemy vs Player")
-        //        } else if bodyA == player && bodyB == powerUp || bodyB == player && bodyA == powerUp {
-        //            print("PowerUp vs Player")
-        //        } else if bodyA == shot && bodyB == enemy || bodyB == shot && bodyA == enemy {
-        //            print("Enemy vs shot")
-        //        }
     }
     
     func didEnd(_ contact: SKPhysicsContact) {
         
     }
 }
+
+
+
+
+
+
