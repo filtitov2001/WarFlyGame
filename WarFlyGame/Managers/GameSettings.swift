@@ -10,33 +10,47 @@
 import UIKit
 
 class GameSettings: NSObject {
+
+    let ud = UserDefaults.standard
     
-    let userDefault = UserDefaults.standard
+    var isMusic = true
+    var isSound = true
     
     let musicKey = "music"
     let soundKey = "sound"
     
-    var isMusic = true
-    var isSound = true
+    var highscore: [Int] = []
+    var currentScore = 0
+    let highscoreKey = "highscore"
     
     override init() {
         super.init()
         
         loadGameSettings()
+        loadScores()
+    }
+    
+    func saveScores() {
+        highscore.append(currentScore)
+        highscore = Array(highscore.sorted { $0 > $1 }.prefix(3))
+        
+        ud.set(highscore, forKey: highscoreKey)
+        ud.synchronize()
+    }
+    
+    func loadScores() {
+        guard ud.value(forKey: highscoreKey) != nil else { return }
+        highscore = ud.array(forKey: highscoreKey) as! [Int]
     }
     
     func saveGameSettings() {
-        userDefault.set(isMusic, forKey: musicKey)
-        userDefault.set(isSound, forKey: soundKey)
+        ud.set(isMusic, forKey: musicKey)
+        ud.set(isSound, forKey: soundKey)
     }
     
     func loadGameSettings() {
-        guard
-            userDefault.value(forKey: musicKey) != nil &&
-                userDefault.value(forKey: soundKey) != nil
-        else { return }
-        
-        isMusic = userDefault.bool(forKey: musicKey)
-        isSound = userDefault.bool(forKey: soundKey)
+        guard ud.value(forKey: musicKey) != nil && ud.value(forKey: soundKey) != nil else { return }
+        isMusic = ud.bool(forKey: musicKey)
+        isSound = ud.bool(forKey: soundKey)
     }
 }

@@ -41,20 +41,19 @@ class GameScene: ParentScene {
     }
     
     override func didMove(to view: SKView) {
+        
         gameSettings.loadGameSettings()
         
         if gameSettings.isMusic && backgroundMusic == nil {
-            if let musicURL = Bundle.main.url(forResource: "backgroundMusic", withExtension: "mp3") {
+            if let musicURL = Bundle.main.url(forResource: "backgroundMusic", withExtension: "m4a") {
                 backgroundMusic = SKAudioNode(url: musicURL)
                 addChild(backgroundMusic)
             }
         }
-        
+  
         self.scene?.isPaused = false
         // checking if scene persists
         guard sceneManager.gameScene == nil else { return }
-        
-        sceneManager.gameScene = self
         
         physicsWorld.contactDelegate = self
         physicsWorld.gravity = CGVector.zero
@@ -252,11 +251,15 @@ extension GameScene: SKPhysicsContactDelegate {
         self.run(waitForExplosionAction){ explosion?.removeFromParent() }
         
         if lives == 0 {
+            
+            gameSettings.currentScore = hud.score
+            gameSettings.saveScores()
+            
             let gameOverScene = GameOverScene(size: self.size)
             gameOverScene.scaleMode = .aspectFill
             let transition = SKTransition.doorsCloseVertical(withDuration: 1.0)
             self.scene!.view?.presentScene(gameOverScene, transition: transition)
-            }
+        }
             
         case [.powerUp, .player]: print("powerUp vs player")
         
@@ -274,9 +277,11 @@ extension GameScene: SKPhysicsContactDelegate {
             
             if contact.bodyA.node?.name == "greenPowerUp" {
                 contact.bodyA.node?.removeFromParent()
+                hud.score += 50
                 player.greenPowerUp()
             } else {
                 contact.bodyB.node?.removeFromParent()
+                hud.score += 50
                 player.greenPowerUp()
             }
         }
@@ -286,6 +291,7 @@ extension GameScene: SKPhysicsContactDelegate {
         if contact.bodyA.node?.parent != nil && contact.bodyB.node?.parent != nil {
             contact.bodyA.node?.removeFromParent()
             contact.bodyB.node?.removeFromParent()
+            
             if gameSettings.isSound {
                 self.run(SKAction.playSoundFileNamed("hitSound", waitForCompletion: false))
             }
