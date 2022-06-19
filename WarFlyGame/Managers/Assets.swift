@@ -19,6 +19,8 @@ class Assets {
     let bluePowerUpAtlas = SKTextureAtlas(named: "BluePowerUp")
     let playerPlaneAtlas = SKTextureAtlas(named: "PlayerPlane")
     
+    var isLoaded = false
+    
     private init() {}
     
     func preloadAssets() {
