@@ -56,7 +56,6 @@ class BestScene: ParentScene {
         let node = self.atPoint(location)
         
         if node.name == "back" {
-            
             let transition = SKTransition.crossFade(withDuration: 1.0)
             guard let backScene = backScene else { return }
             backScene.scaleMode = .aspectFill

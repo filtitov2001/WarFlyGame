@@ -18,7 +18,7 @@ class GameScene: ParentScene {
     fileprivate var player: PlayerPlane!
     fileprivate let hud = HUD()
     fileprivate let screenSize = UIScreen.main.bounds.size
-  
+    
     
     override func didMove(to view: SKView) {
         self.scene?.isPaused = false
@@ -47,7 +47,7 @@ class GameScene: ParentScene {
     }
     
     fileprivate func spawnPowerUp() {
-
+        
         let spawnAction = SKAction.run {
             let randomNumber = Int(arc4random_uniform(2))
             let powerUp = randomNumber == 1 ? BluePowerUp() : GreenPowerUp()
@@ -176,7 +176,7 @@ class GameScene: ParentScene {
             self.scene?.isPaused = true
             self.scene!.view?.presentScene(pauseScene, transition: transition)
         } else {
-//            self.scene?.isPaused = false
+            //            self.scene?.isPaused = false
             playerFire()
         }
     }
@@ -187,11 +187,35 @@ extension GameScene: SKPhysicsContactDelegate {
     
     func didBegin(_ contact: SKPhysicsContact) {
         
+        let explosion = SKEmitterNode(fileNamed: "EnemyExplosion")
+        let contactPoint = contact.contactPoint
+        explosion?.position = contactPoint
+        
+        let waitForExplosionAction = SKAction.wait(forDuration: 1.0)
+        
         let contactCategory: BitMaskCategory = [contact.bodyA.category, contact.bodyB.category]
         switch contactCategory {
         case [.enemy, .player]: print("enemy vs player")
+            
+            if contact.bodyA.node?.name == "sprite" {
+                contact.bodyA.node?.removeFromParent()
+            } else {
+                contact.bodyB.node?.removeFromParent()
+            }
+            addChild(explosion!)
+            self.run(waitForExplosionAction) {
+                explosion?.removeFromParent()
+            }
         case [.powerUp, .player]: print("powerUp vs player")
         case [.enemy, .shot]: print("enemy vs shot")
+            
+            contact.bodyA.node?.removeFromParent()
+            contact.bodyB.node?.removeFromParent()
+            addChild(explosion!)
+            self.run(waitForExplosionAction) {
+                explosion?.removeFromParent()
+            }
+            
         default: preconditionFailure("Unable to detect collision category")
         }
     }
