@@ -234,7 +234,7 @@ extension GameScene: SKPhysicsContactDelegate {
         
         let contactCategory: BitMaskCategory = [contact.bodyA.category, contact.bodyB.category]
         switch contactCategory {
-        case [.enemy, .player]: print("enemy vs player")
+        case [.enemy, .player]:
         
         if contact.bodyA.node?.name == "sprite" {
             if contact.bodyA.node?.parent != nil {
@@ -261,7 +261,7 @@ extension GameScene: SKPhysicsContactDelegate {
             self.scene!.view?.presentScene(gameOverScene, transition: transition)
         }
             
-        case [.powerUp, .player]: print("powerUp vs player")
+        case [.powerUp, .player]:
         
         if contact.bodyA.node?.parent != nil && contact.bodyB.node?.parent != nil {
             
@@ -286,7 +286,7 @@ extension GameScene: SKPhysicsContactDelegate {
             }
         }
             
-        case [.enemy, .shot]: print("enemy vs shot")
+        case [.enemy, .shot]:
         
         if contact.bodyA.node?.parent != nil && contact.bodyB.node?.parent != nil {
             contact.bodyA.node?.removeFromParent()
