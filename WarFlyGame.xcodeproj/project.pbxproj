@@ -35,6 +35,7 @@
 		2BA2400B285F31E000B02251 /* BitMaskCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA2400A285F31E000B02251 /* BitMaskCategory.swift */; };
 		2BA2400D285F52CC00B02251 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA2400C285F52CC00B02251 /* HUD.swift */; };
 		2BA24017285F5A3B00B02251 /* ButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA24016285F5A3B00B02251 /* ButtonNode.swift */; };
+		2BA24019285F5FED00B02251 /* PauseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA24018285F5FED00B02251 /* PauseScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +68,7 @@
 		2BA2400A285F31E000B02251 /* BitMaskCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitMaskCategory.swift; sourceTree = "<group>"; };
 		2BA2400C285F52CC00B02251 /* HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
 		2BA24016285F5A3B00B02251 /* ButtonNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonNode.swift; sourceTree = "<group>"; };
+		2BA24018285F5FED00B02251 /* PauseScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +193,7 @@
 			children = (
 				2B7B8434285524D700C20BEF /* GameScene.swift */,
 				2BA24008285E99D200B02251 /* MenuScene.swift */,
+				2BA24018285F5FED00B02251 /* PauseScene.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 				2BA23FEE285E019000B02251 /* PowerUp.swift in Sources */,
 				2BA2400B285F31E000B02251 /* BitMaskCategory.swift in Sources */,
 				2BA24009285E99D200B02251 /* MenuScene.swift in Sources */,
+				2BA24019285F5FED00B02251 /* PauseScene.swift in Sources */,
 				2BA2400D285F52CC00B02251 /* HUD.swift in Sources */,
 				2BA24001285E8A8D00B02251 /* Shot.swift in Sources */,
 				2BA23FEC285DD9BE00B02251 /* protocol GameBackgroundSpritable + Extension.swift in Sources */,
