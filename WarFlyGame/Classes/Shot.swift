@@ -9,12 +9,13 @@
 import SpriteKit
 
 class Shot: SKSpriteNode {
-    let screenSize = UIScreen.main.bounds
     
     fileprivate let initialSize = CGSize(width: 187, height: 237)
     fileprivate let textureAtlas: SKTextureAtlas!
     fileprivate var textureNameBeingsWith = ""
     fileprivate var animationSpriteArray = [SKTexture]()
+    
+    let screenSize = UIScreen.main.bounds
     
     init(textureAtlas: SKTextureAtlas) {
         self.textureAtlas = textureAtlas

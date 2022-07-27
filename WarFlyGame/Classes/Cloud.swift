@@ -16,6 +16,7 @@ final class Cloud: SKSpriteNode, GameBackgroudSpritable {
     static func populate(at point: CGPoint?) -> Cloud {
         let cloudImageName = configireName()
         let cloud = Cloud(imageNamed: cloudImageName)
+        
         cloud.setScale(randomScaleFactor)
         cloud.position = point ?? randomPoint()
         cloud.zPosition = 10

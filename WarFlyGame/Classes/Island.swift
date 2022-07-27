@@ -15,6 +15,7 @@ final class Island: SKSpriteNode, GameBackgroudSpritable {
     static func populate(at point: CGPoint?) -> Island {
         let islandImageName = configireName()
         let island = Island(imageNamed: islandImageName)
+        
         island.setScale(randomScaleFactor)
         island.position = point ?? randomPoint()
         island.zPosition = 1

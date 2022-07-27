@@ -13,14 +13,15 @@ import CoreMotion
 class PlayerPlane: SKSpriteNode {
     
     let motionManager = CMMotionManager()
-    var xAcceleration: CGFloat = 0
     let screenSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+    let animationSpriteStrides = [(13, 1, -1), (13, 26, 1), (13, 13, 1)]
+    
+    var xAcceleration: CGFloat = 0
     var leftTextureArrayAnimation = [SKTexture]()
     var rightTextureArrayAnimation = [SKTexture]()
     var forwardTextureArrayAnimation = [SKTexture]()
     var moveDirection: TurnDirection = .none
     var stillTurning = false
-    let animationSpriteStrides = [(13, 1, -1), (13, 26, 1), (13, 13, 1)]
     
     static func populate(at point: CGPoint) -> PlayerPlane {
         let atlas = Assets.shared.playerPlaneAtlas

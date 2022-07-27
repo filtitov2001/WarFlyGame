@@ -20,12 +20,7 @@ class MenuScene: ParentScene {
         }
         
         setHeader(withName: nil, andBackground: "header1")
-        
-//        let header = SKSpriteNode(imageNamed: "header1")
-//        header.position = CGPoint(x: self.frame.midX, y: self.frame.midY + 150)
-//        self.addChild(header)
-        
-        
+
         for (index, title) in titles.enumerated() {
             let button = ButtonNode(titled: title, backgroundName: "button_background")
             button.position = CGPoint(x: self.frame.midX, y: self.frame.midY - CGFloat(100 * index))

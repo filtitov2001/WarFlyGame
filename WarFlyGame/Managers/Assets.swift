@@ -10,6 +10,7 @@
 import SpriteKit
 
 class Assets {
+    
     static let shared = Assets()
     
     let yellowShotAtlas = SKTextureAtlas(named: "YellowShot")

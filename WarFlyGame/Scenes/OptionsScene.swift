@@ -10,6 +10,7 @@
 import SpriteKit
 
 class OptionsScene: ParentScene {
+    
     var isMusic: Bool!
     var isSound: Bool!
     
@@ -23,21 +24,27 @@ class OptionsScene: ParentScene {
         let backgroundNameForSound = isSound ? "sound" : "nosound"
         
         let music = ButtonNode(titled: nil, backgroundName: backgroundNameForMusic)
+        
         music.position = CGPoint(x: self.frame.midX - 50, y: self.frame.midY)
         music.name = "music"
         music.label.isHidden = true
+        
         addChild(music)
         
         let sound = ButtonNode(titled: nil, backgroundName: backgroundNameForSound)
+        
         sound.position = CGPoint(x: self.frame.midX + 50, y: self.frame.midY)
         sound.name = "sound"
         sound.label.isHidden = true
+        
         addChild(sound)
         
         let back = ButtonNode(titled: "back", backgroundName: "button_background")
+        
         back.position = CGPoint(x: self.frame.midX, y: self.frame.midY - 100)
         back.name = "back"
         back.label.name = "back"
+        
         addChild(back)
     }
     

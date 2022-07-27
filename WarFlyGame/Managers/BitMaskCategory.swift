@@ -10,6 +10,7 @@
 import SpriteKit
 
 extension SKPhysicsBody {
+    
     var category: BitMaskCategory {
         get {
             return BitMaskCategory(rawValue: self.categoryBitMask)

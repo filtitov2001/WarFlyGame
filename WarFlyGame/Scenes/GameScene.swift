@@ -12,10 +12,7 @@ import GameplayKit
 
 
 class GameScene: ParentScene {
-    
-    
-    var backgroundMusic: SKAudioNode!
-    
+
     fileprivate var player: PlayerPlane!
     fileprivate let hud = HUD()
     fileprivate let screenSize = UIScreen.main.bounds.size
@@ -39,6 +36,8 @@ class GameScene: ParentScene {
             }
         }
     }
+    
+    var backgroundMusic: SKAudioNode!
     
     override func didMove(to view: SKView) {
         
@@ -306,7 +305,5 @@ extension GameScene: SKPhysicsContactDelegate {
         }
     }
     
-    func didEnd(_ contact: SKPhysicsContact) {
-        
-    }
+    func didEnd(_ contact: SKPhysicsContact) {}
 }
