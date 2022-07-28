@@ -11,7 +11,6 @@ There are two types of enemies in game, and two types of PowerUp, with getting m
   [![iOS](https://img.shields.io/badge/iOS-15.5-blue)](https://www.apple.com/ru/ios/ios-15/)
   [![Swift](https://img.shields.io/badge/Swift-5.5-orange)](https://developer.apple.com/documentation/swift)
   [![UIKit](https://img.shields.io/badge/UIKit-%20LTS-yellowgreen)](https://developer.apple.com/documentation/uikit)
-  [![UIKit](https://img.shields.io/badge/UIKit-%20LTS-yellowgreen)](https://developer.apple.com/documentation/uikit)
   [![SpriteKit](https://img.shields.io/static/v1?label=SpriteKit&message=LTS&color=ffffff)](https://developer.apple.com/spritekit/)
   
 </div>
